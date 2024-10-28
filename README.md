@@ -49,4 +49,4 @@ This project is an interactive web application aimed at promoting environmental 
 - Implement user authentication with a real backend instead of local storage.
 
 ## Author
-- **Marlen Amanbaev** - Lead Developer and Project Manager
+- **Marlen Amanbaev and Alshyn Niyaz** 
