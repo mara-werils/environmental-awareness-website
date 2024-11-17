@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+    <section class="hero-section text-center text-white d-flex align-items-center justify-content-center"
+        style="background-image: url('images/hero.jpg'); height: 100vh; background-size: cover; background-position: center;">
+        <div>
+            <h1 class="display-4">Together We Can Make a Difference</h1>
+            <p class="lead">Join us in the journey to protect and preserve our planet.</p>
+            <a href="#main-content" class="btn btn-primary btn-lg mt-3" id="learnMoreBtn">Learn More</a>
+        </div>
+    </section>
+
+
     <header id="header" class="bg-success text-white p-3 text-center">
         <h1>Protecting Our Planet</h1>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Environmental Awareness</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -31,7 +44,7 @@
                             <a class="nav-link" href="contact.html">Contact Us</a>
                         </li>
                     </ul>
-                    
+
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="login.html" id="login-link">Login</a>
@@ -40,40 +53,48 @@
                             <a class="nav-link" href="#">Logout</a>
                         </li>
                     </ul>
-                    
-                    
-                    
-                    
+
+
+
+
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="container mt-4">
-        <section class="row mb-4">
-            <div class="col-lg-6">
+    <main class="container mt-4" id="main-content">
+        <section class="row mb-4 fade-in">
+            <div class="col-lg-6 fade-in">
                 <h2 class="section-heading">Why Environmental Awareness Matters</h2>
-                <p>Environmental awareness is essential for protecting our planet. Understanding the impact of human activity on the environment can help us make better choices and promote sustainability.</p>
-                <button class="btn btn-primary" id="readMoreBtn">Read More</button>
+                <p>Environmental awareness is essential for protecting our planet. Understanding the impact of human
+                    activity on the environment can help us make better choices and promote sustainability.</p>
+                <button class="btn btn-primary fade-in" id="readMoreBtn">Read More</button>
                 <p id="moreContent" style="display: none;">
-                    The impact of human activities on the environment is vast and varied. From deforestation to pollution, each action has a ripple effect on ecosystems worldwide. By reducing our carbon footprint, minimizing waste, and adopting sustainable practices, we can mitigate some of these adverse effects. 
+                    The impact of human activities on the environment is vast and varied. From deforestation to
+                    pollution, each action has a ripple effect on ecosystems worldwide. By reducing our carbon
+                    footprint, minimizing waste, and adopting sustainable practices, we can mitigate some of these
+                    adverse effects.
                     <br>
-                    For example, planting trees not only helps absorb CO2 from the atmosphere, but it also provides habitat for wildlife, improves air quality, and promotes biodiversity. On an individual level, small actions like reducing plastic usage, conserving water, and supporting renewable energy can collectively make a significant difference.
+                    For example, planting trees not only helps absorb CO2 from the atmosphere, but it also provides
+                    habitat for wildlife, improves air quality, and promotes biodiversity. On an individual level, small
+                    actions like reducing plastic usage, conserving water, and supporting renewable energy can
+                    collectively make a significant difference.
                 </p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 fade-in">
                 <h2 class="section-heading">Our Mission</h2>
-                <p>Our mission is to educate and inspire individuals to take action in their daily lives to reduce their environmental footprint, ensuring a healthy planet for future generations.</p>
+                <p>Our mission is to educate and inspire individuals to take action in their daily lives to reduce their
+                    environmental footprint, ensuring a healthy planet for future generations.</p>
             </div>
         </section>
-        
-        <section class="mb-4">
+
+        <section class="mb-4 fade-in">
             <h3>Greeting</h3>
             <p id="greetingDisplay"></p>
         </section>
-        
-        <section class="row">
-            <div class="col-lg-4">
+
+        <section class="row fade-in">
+            <div class="col-lg-4 fade-in">
                 <div class="card">
                     <img src="images/nature1.jpg" class="card-img-top" alt="Nature 1">
                     <div class="card-body">
@@ -82,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 fade-in">
                 <div class="card">
                     <img src="images/nature2.jpg" class="card-img-top" alt="Nature 2">
                     <div class="card-body">
@@ -91,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 fade-in">
                 <div class="card">
                     <img src="images/nature3.jpg" class="card-img-top" alt="Nature 3">
                     <div class="card-body">
@@ -102,17 +123,6 @@
             </div>
         </section>
 
-        <section class="mb-4">
-            <h3>Fun Section</h3>
-            <button class="btn btn-info" id="getQuoteBtn">Get Random Quote</button>
-            <p id="quoteDisplay"></p>
-        </section>
-
-        <section class="mb-4">
-            <h3>Show Current Time</h3>
-            <button class="btn btn-warning" id="showTimeBtn">Show Current Time</button>
-            <p id="timeDisplay"></p>
-        </section>
     </main>
 
     <footer class="bg-dark text-white text-center py-3 mt-4">
@@ -127,6 +137,26 @@
     <script src="js/event-handling.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/auth.js"></script>
-    
+    <script src="js/theme-switcher.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const learnMoreBtn = document.getElementById('learnMoreBtn');
+            if (learnMoreBtn) {
+                learnMoreBtn.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const mainContent = document.querySelector('#main-content');
+                    const navbarHeight = document.querySelector('header').offsetHeight;
+
+                    window.scrollTo({
+                        top: mainContent.offsetTop - navbarHeight, // Offset to keep navbar visible
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+
+
+    </script>
 </body>
+
 </html>

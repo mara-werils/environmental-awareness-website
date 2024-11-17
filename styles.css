@@ -246,6 +246,12 @@ ol, ul, dl {
 
 
 
+
+
+
+
+
+
 body.dark-theme {
     background-color: black;
     color: white;
@@ -265,4 +271,73 @@ body.dark-theme {
 
 .form-step.active {
     display: block;
+}
+
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme p,
+body.dark-theme .section-heading {
+    color: white;
+}
+
+body.dark-theme .navbar, 
+body.dark-theme .btn {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-theme .card {
+    background-color: #444;
+    color: white;
+}
+
+/* Ensure form inputs and other text areas are styled appropriately in dark mode */
+body.dark-theme .form-input,
+body.dark-theme .form-label {
+    background-color: #333;
+    color: white;
+}
+
+
+
+
+
+
+
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+.container {
+    max-width: 1200px;
+}
+.hero-section {
+    height: 100vh;
+    text-align: center;
+    padding: 30px;
+}
+
+
+
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 8px 10px;
+}
+.navbar-brand {
+    font-size: 1.2rem;
 }
