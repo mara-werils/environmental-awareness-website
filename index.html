@@ -15,7 +15,7 @@
         <div>
             <h1 class="display-4">Together We Can Make a Difference</h1>
             <p class="lead">Join us in the journey to protect and preserve our planet.</p>
-            <a href="#main-content" class="btn btn-primary btn-lg mt-3" id="learnMoreBtn">Learn More</a>
+            <a href="#main-content" class="btn btn-primary btn-lg mt-3 icon-btn" id="learnMoreBtn">Learn More</a>
         </div>
     </section>
 
@@ -46,11 +46,23 @@
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
+                        <!-- Внутри ul.navbar-nav.ms-auto -->
+                        <li class="nav-item">
+                            <button id="toggleThemeBtn" class="btn btn-outline-secondary ms-3">Toggle Day/Night
+                                Theme</button>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup.html" id="signup-link">Sign Up</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="login.html" id="login-link">Login</a>
                         </li>
                         <li class="nav-item d-none" id="logout-link">
                             <a class="nav-link" href="#">Logout</a>
+                        </li>
+                        <li class="nav-item d-none" id="profile-link">
+                            <a class="nav-link" href="profile.html">Profile</a>
                         </li>
                     </ul>
 
@@ -68,7 +80,7 @@
                 <h2 class="section-heading">Why Environmental Awareness Matters</h2>
                 <p>Environmental awareness is essential for protecting our planet. Understanding the impact of human
                     activity on the environment can help us make better choices and promote sustainability.</p>
-                <button class="btn btn-primary fade-in" id="readMoreBtn">Read More</button>
+                <button class="btn btn-primary fade-in animated-btn" id="readMoreBtn">Read More</button>
                 <p id="moreContent" style="display: none;">
                     The impact of human activities on the environment is vast and varied. From deforestation to
                     pollution, each action has a ripple effect on ecosystems worldwide. By reducing our carbon
@@ -88,9 +100,9 @@
             </div>
         </section>
 
-        <section class="mb-4 fade-in">
-            <h3>Greeting</h3>
-            <p id="greetingDisplay"></p>
+        <section class="mb-5 text-center fade-in" style="border-top: 2px solid #4CAF50; padding-top: 15px;">
+            <h3 class="mb-3">Welcome to Our Community!</h3>
+            <p id="greetingDisplay" class="lead">Let's work together to create a sustainable future.</p>
         </section>
 
         <section class="row fade-in">

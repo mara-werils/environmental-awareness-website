@@ -310,7 +310,13 @@ body.dark-theme .form-label {
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards;
     transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .fade-in.visible {
@@ -340,4 +346,121 @@ body.dark-theme .form-label {
 }
 .navbar-brand {
     font-size: 1.2rem;
+}
+
+
+
+
+
+/* Эффект увеличенной тени */
+.animated-btn {
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.animated-btn:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px); /* немного поднимает кнопку */
+}
+
+/* Ripple-эффект */
+.animated-btn::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.6);
+    display: block;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1);
+    transition: transform 0.6s, opacity 0.6s;
+}
+
+.animated-btn:active::after {
+    transform: scale(0);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Анимация иконок на кнопках */
+.icon-btn i {
+    transition: transform 0.3s ease;
+}
+
+.icon-btn:hover i {
+    transform: rotate(360deg) scale(1.2); /* Поворот и увеличение */
+}
+
+
+
+.ripple {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(20);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+.book-search {
+    text-align: center;
+}
+
+#bookResults {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.book-card {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.book-card h5 {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+
+
+
+
+.is-invalid {
+    border-color: red;
+}
+
+.is-invalid:focus {
+    outline: none;
+    box-shadow: 0 0 5px red;
+}
+.error-message {
+    font-size: 0.875em;
+    color: red;
+    margin-top: 5px;
 }

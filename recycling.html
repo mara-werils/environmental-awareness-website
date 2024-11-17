@@ -95,20 +95,17 @@
                 </div>
             </div>
         </section>
-
-
-
-        <section class="mb-4">
-            <h3>Show Current Time</h3>
-            <button class="btn btn-warning" id="showTimeBtn">Show Current Time</button>
-            <p id="timeDisplay"></p>
+        <section class="book-search mt-5">
+            <h3>Find Books on Climate Change</h3>
+            <input type="text" id="bookQuery" class="form-control" placeholder="Enter a topic (e.g., Climate Change)">
+            <button id="searchBooksBtn" class="btn btn-primary mt-3">Search Books</button>
+            <div id="bookResults" class="mt-4"></div>
         </section>
 
-        <section class="environmental-tips">
-            <h3>Environmental Tips</h3>
-            <ul id="tips-list"></ul>
-        </section>
-        
+
+
+
+
     </main>
 
     <footer class="bg-dark text-white text-center py-3 mt-4">
@@ -144,6 +141,46 @@
             displayTips();
         });
     </script>
+    <script>
+        document.getElementById('searchBooksBtn').addEventListener('click', function () {
+            const query = document.getElementById('bookQuery').value;
+            if (!query) {
+                alert("Please enter a search term.");
+                return;
+            }
 
-</body >
-</html >
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyBg26PzQu2Agge4lIVZ-uLvijCsCrqFhz4`)
+                .then(response => response.json())
+                .then(data => displayBooks(data))
+                .catch(error => console.error("Error fetching books:", error));
+        });
+
+        function displayBooks(data) {
+            const bookResults = document.getElementById('bookResults');
+            bookResults.innerHTML = '';
+
+            if (data.totalItems === 0) {
+                bookResults.innerHTML = "<p>No books found for this topic.</p>";
+                return;
+            }
+
+            data.items.forEach(item => {
+                const book = item.volumeInfo;
+                const bookElement = document.createElement('div');
+                bookElement.classList.add('book-card');
+
+                bookElement.innerHTML = `
+            <img src="${book.imageLinks?.thumbnail || 'default-image.jpg'}" alt="Book Cover">
+            <h5>${book.title}</h5>
+            <p>${book.authors ? book.authors.join(', ') : 'Unknown Author'}</p>
+            <p><a href="${book.previewLink}" target="_blank">Preview Book</a></p>
+        `;
+
+                bookResults.appendChild(bookElement);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

@@ -87,21 +87,22 @@
             </div>
         </section>
 
-        <section class="mt-5">
-            <button class="btn btn-dark" id="toggleThemeBtn">Toggle Day/Night Theme</button>
-        </section>
 
         <section class="filtered-quotes mt-5">
             <h3>Filter Environmental Quotes</h3>
-            <select id="quoteFilter" class="form-select mb-3">
-                <option value="all">All</option>
-                <option value="water">Water</option>
-                <option value="carbon">Carbon</option>
-                <option value="trees">Trees</option>
-                <option value="energy">Energy</option>
-                <option value="recycle">Recycle</option>
-            </select>
-            <div id="filtered-quotes"></div>
+            <div class="filter-controls mb-3">
+                <select id="quoteFilter" class="form-select mb-2">
+                    <option value="all">All</option>
+                    <option value="water">Water</option>
+                    <option value="carbon">Carbon</option>
+                    <option value="trees">Trees</option>
+                    <option value="energy">Energy</option>
+                    <option value="recycle">Recycle</option>
+                </select>
+                <input type="text" id="searchInput" class="form-control" placeholder="Search quotes..." />
+            </div>
+            <p id="quoteCount" class="text-muted mb-3"></p>
+            <div id="filtered-quotes" class="quotes-container"></div>
         </section>
 
 
@@ -118,31 +119,82 @@
     <script>
         const allQuotes = [
             { category: "water", text: "Save water." },
+            { category: "water", text: "Conserve water, conserve life." },
+            { category: "water", text: "Every drop counts. Save water." },
             { category: "carbon", text: "Reduce carbon footprint." },
-            { category: "trees", text: "Plant more trees." },
+            { category: "carbon", text: "Carbon reduction is our solution." },
+            { category: "carbon", text: "Be carbon-conscious for a greener future." },
+            { category: "trees", text: "Trees give us life, let’s return the favor." },
+            { category: "trees", text: "A tree planted today is a breath for tomorrow." },
             { category: "energy", text: "Switch to renewable energy." },
-            { category: "recycle", text: "Recycle waste efficiently." }
+            { category: "energy", text: "Harness the power of the sun for a brighter future." },
+            { category: "energy", text: "Let’s make energy clean and green." },
+            { category: "recycle", text: "Recycle waste efficiently." },
+            { category: "recycle", text: "Recycling is a small step for us, a giant leap for the planet." },
+            { category: "recycle", text: "Waste less, recycle more." },
+            { category: "nature", text: "Protect nature for future generations." },
+            { category: "nature", text: "The earth does not belong to us; we belong to the earth." },
+            { category: "nature", text: "Nature is priceless. Preserve it." },
+            { category: "ocean", text: "Keep the oceans blue and clean." },
+            { category: "ocean", text: "Protect marine life by reducing plastic waste." },
+            { category: "ocean", text: "Our oceans are our future; let’s keep them alive." },
+            { category: "pollution", text: "Fight pollution for a cleaner tomorrow." },
+            { category: "pollution", text: "Pollution doesn’t just go away. Reduce it." },
+            { category: "pollution", text: "Less pollution is the best solution." },
+            { category: "climate", text: "Act now for a stable climate." },
+            { category: "climate", text: "Climate action is the need of the hour." },
+            { category: "climate", text: "Protect our planet, fight climate change." }
         ];
 
-        function displayFilteredQuotes(filter) {
+
+        function displayFilteredQuotes(filter, searchTerm = "") {
             const quotesContainer = document.getElementById("filtered-quotes");
             quotesContainer.innerHTML = "";
-            const filteredQuotes = filter === "all" ? allQuotes : allQuotes.filter(quote => quote.category === filter);
-            filteredQuotes.forEach(quote => {
+            const filteredQuotes = allQuotes.filter(quote => {
+                const matchesCategory = filter === "all" || quote.category === filter;
+                const matchesSearch = quote.text.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            // Обновление счётчика результатов
+            const quoteCount = document.getElementById("quoteCount");
+            quoteCount.textContent = `${filteredQuotes.length} quote(s) found`;
+
+            // Анимация появления цитат
+            filteredQuotes.forEach((quote, index) => {
                 const quoteElement = document.createElement("p");
                 quoteElement.textContent = quote.text;
+                quoteElement.classList.add("fade-in");
+                quoteElement.style.animationDelay = `${index * 100}ms`; // Задержка для плавного появления
                 quotesContainer.appendChild(quoteElement);
             });
         }
 
+        // Событие изменения категории фильтра
         document.getElementById("quoteFilter").addEventListener("change", function () {
             const selectedFilter = this.value;
-            displayFilteredQuotes(selectedFilter);
+            const searchTerm = document.getElementById("searchInput").value;
+            displayFilteredQuotes(selectedFilter, searchTerm);
+            localStorage.setItem("selectedFilter", selectedFilter);
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
-            displayFilteredQuotes("all");
+        // Событие ввода текста для поиска
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const searchTerm = this.value;
+            const selectedFilter = document.getElementById("quoteFilter").value;
+            displayFilteredQuotes(selectedFilter, searchTerm);
+            localStorage.setItem("searchTerm", searchTerm);
         });
+
+        // Загрузка сохраненного фильтра и текста поиска
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedFilter = localStorage.getItem("selectedFilter") || "all";
+            const savedSearchTerm = localStorage.getItem("searchTerm") || "";
+            document.getElementById("quoteFilter").value = savedFilter;
+            document.getElementById("searchInput").value = savedSearchTerm;
+            displayFilteredQuotes(savedFilter, savedSearchTerm);
+        });
+
     </script>
 </body>
 

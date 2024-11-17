@@ -1,32 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginLink = document.getElementById("login-link");
+    const signupLink = document.getElementById("signup-link");
     const logoutLink = document.getElementById("logout-link");
+    const profileLink = document.getElementById("profile-link");
 
-    if (!loginLink || !logoutLink) {
-        console.error("Elements with ID 'login-link' or 'logout-link' are missing.");
-        return;
-    }
+    // Получаем данные пользователя из localStorage
+    const storedUsername = localStorage.getItem("username");
+    const storedEmail = localStorage.getItem("email");
+    const storedPassword = localStorage.getItem("password");
 
-    const username = localStorage.getItem("username");
-
-    if (username) {
+    // Обновляем навигацию на основе статуса входа
+    if (storedUsername) {
         loginLink.classList.add("d-none");
+        signupLink.classList.add("d-none");
         logoutLink.classList.remove("d-none");
+        profileLink.classList.remove("d-none");
     } else {
         loginLink.classList.remove("d-none");
+        signupLink.classList.remove("d-none");
         logoutLink.classList.add("d-none");
+        profileLink.classList.add("d-none");
     }
 
+    // Обработка формы входа
     const loginForm = document.getElementById("login-form");
-
     if (loginForm) {
         loginForm.addEventListener("submit", function (event) {
             event.preventDefault();
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+            const usernameInput = document.getElementById("username").value;
+            const passwordInput = document.getElementById("password").value;
 
-            if (username && password) {
-                localStorage.setItem("username", username);
+            // Проверяем введенные данные с сохраненными
+            if (usernameInput === storedUsername && passwordInput === storedPassword) {
                 document.getElementById("login-message").innerText = 'Login successful! Redirecting...';
                 setTimeout(() => {
                     window.location.href = 'index.html';
@@ -37,9 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    logoutLink.addEventListener("click", function () {
-        localStorage.removeItem("username");
-        alert("You have logged out.");
-        window.location.href = 'login.html';
-    });
+    // Обработка выхода из системы
+    if (logoutLink) {
+        logoutLink.addEventListener("click", function () {
+            localStorage.removeItem("username");
+            localStorage.removeItem("email");
+            localStorage.removeItem("password");
+
+            window.location.href = 'index.html';
+        });
+    }
 });
