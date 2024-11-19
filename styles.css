@@ -1,6 +1,8 @@
 body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
+
+    transition: background-color 0.5s, color 0.5s;
     padding: 0;
     background-color: white;
     color: #333;
@@ -128,6 +130,24 @@ ol, ul, dl {
 .footer-link:hover {
     color: #ffeb3b;
 }
+footer {
+    background-color: #333; /* Цвет фона */
+    color: white; /* Цвет текста */
+    text-align: center; /* Выравнивание текста */
+    padding: 20px; /* Отступы */
+    margin-top: auto; /* Отправляет footer в нижнюю часть страницы */
+    width: 100%; /* Занимает всю ширину */
+    box-sizing: border-box; /* Учитывает отступы */
+}
+
+
+main {
+    flex: 1; /* Заставляет main занимать всё доступное пространство */
+}
+
+
+
+
 
 .form-input {
     width: 100%;
@@ -470,4 +490,24 @@ body.dark-theme .form-label {
     border: 2px solid black; /* Добавляем черную рамку */
     color: black; /* Устанавливаем черный цвет текста */
     background-color: white; /* Белый фон */
+}
+
+
+body.contact-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Устанавливает минимальную высоту для страницы */
+}
+
+body.contact-page main {
+    flex: 1; /* Растягивает контент, оставляя место для футера */
+}
+
+body.contact-page footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }

@@ -46,3 +46,7 @@ document.querySelectorAll('.animated-btn').forEach(button => {
         }, 600); // Удаление ripple-эффекта после анимации
     });
 });
+
+
+
+
